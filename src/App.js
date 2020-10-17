@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { graphql } from "@octokit/graphql";
 import "./App.css";
 
+const { REACT_APP_TOKEN } = process.env;
+
 const App = () => {
   const [login, setLogin] = useState("");
   const [user, setUser] = useState(null);
@@ -36,10 +38,9 @@ const App = () => {
       login,
       first,
       headers: {
-        authorization: `token 1e707e8a4fde638ace80907e2661fc9608756e40`,
+        authorization: `token ${REACT_APP_TOKEN}`,
       },
     });
-    console.log(repositoryOwner);
     setUser(repositoryOwner);
     setRepos(
       repositoryOwner.repositories.nodes
