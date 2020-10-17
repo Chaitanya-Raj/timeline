@@ -1,6 +1,7 @@
 * {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
+  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -37,7 +38,7 @@ input {
   width: 50vw;
   height: 7vh;
   text-align: center;
-  font-size: 2rem;
+  font-size: 1.5rem;
   border: none;
   color: #323031;
   background-color: #c6af8f;
@@ -191,6 +192,7 @@ input {
 }
 
 .timeline-item-content p {
+  word-wrap: break-word;
   font-size: 1rem;
   line-height: 24px;
   margin: 15px 0;
@@ -199,6 +201,7 @@ input {
 
 .timeline-item-content a {
   font-size: 1.1rem;
+  word-wrap: break-word;
   text-decoration: none;
   font-weight: bold;
   color: #323031;
@@ -227,10 +230,6 @@ input {
 }
 
 @media only screen and (max-width: 1023px) {
-  input {
-    font-size: 1.5rem;
-  }
-
   .user-info {
     font-size: 0.7rem;
   }
@@ -242,7 +241,8 @@ input {
 
 @media only screen and (max-width: 767px) {
   input {
-    font-size: 1.2rem;
+    width: 90vw;
+    font-size: 1rem;
   }
 
   .user-info {
@@ -265,7 +265,14 @@ input {
     margin-top: 20px;
   }
 
+  .timeline-item-content p {
+    font-size: 1rem;
+    word-wrap: break-word;
+  }
+
   .timeline-item-content a {
+    font-size: 1rem;
+    word-break: break-all;
     text-decoration: underline;
   }
 

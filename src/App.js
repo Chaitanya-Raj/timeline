@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { graphql } from "@octokit/graphql";
 import "./App.css";
+import User from "./Components/User";
+import Repo from "./Components/Repo";
 
 const { REACT_APP_TOKEN } = process.env;
 
@@ -60,9 +62,6 @@ const App = () => {
         })
         .reverse()
     );
-    setTimeout(() => {
-      document.querySelector(".result").scrollIntoView();
-    }, 1500);
   };
 
   return (
@@ -75,50 +74,13 @@ const App = () => {
           id="user"
           value={login}
           onChange={(e) => setLogin(e.target.value)}
+          placeholder="Type a github username..."
         />
       </form>
       {user && repos && (
         <div className="result">
-          <div className="user-info">
-            <img src={user.avatarUrl} alt="Avatar" />
-            <h1>
-              <a href={user.url}>{user.login}</a>
-            </h1>
-            <h1>
-              Total Repositories <br />
-              {user.repositories.totalCount}
-            </h1>
-          </div>
-          <div className="timeline-container">
-            {repos.map((repo) => {
-              return (
-                <div className="timeline-item" key={repo.link.url}>
-                  <div className="timeline-item-content">
-                    {repo.category.tag && (
-                      <span
-                        className="tag"
-                        style={{ background: repo.category.color }}
-                      >
-                        {repo.category.tag}
-                      </span>
-                    )}
-                    <time>{repo.date}</time>
-                    <p>{repo.text}</p>
-                    {repo.link && (
-                      <a
-                        href={repo.link.url}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                      >
-                        {repo.link.text}
-                      </a>
-                    )}
-                    <span className="circle" />
-                  </div>
-                </div>
-              );
-            })}
-          </div>
+          <User user={user} />
+          <Repo repos={repos} />
         </div>
       )}
     </div>
