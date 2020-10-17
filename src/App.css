@@ -75,19 +75,19 @@ input {
 }
 
 .user-info {
-  padding: 20px;
-  margin-bottom: 30px;
+  padding-top: 10px;
   background: #c6af8f;
   color: #323031;
   display: flex;
   align-items: center;
   justify-content: space-around;
-  width: 70vw;
+  width: 65vw;
   border-radius: 50px;
   box-shadow: 1px 1px 10px #222, -1px -1px 10px #222;
 }
 
 .user-info img {
+  margin-top: 10px;
   border: 1px solid #323031;
   width: 150px;
 }
