@@ -33,7 +33,7 @@ const App = () => {
       login,
       first,
       headers: {
-        authorization: `token 1e707e8a4fde638ace80907e2661fc9608756e40`,
+        authorization: `token INSERT_TOKEN_HERE`,
       },
     });
     console.log(repositoryOwner);
