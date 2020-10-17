@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { graphql } from "@octokit/graphql";
-import { Chrono } from "react-chrono";
 import "./App.css";
 
 const App = () => {
@@ -23,6 +22,10 @@ const App = () => {
               nodes {
                 name
                 description
+                primaryLanguage{
+                  name
+                  color
+                }
                 createdAt
                 url
               }
@@ -42,9 +45,16 @@ const App = () => {
       repositoryOwner.repositories.nodes
         .map((r) => {
           return {
-            title: r.createdAt,
-            contentTitle: <a href={r.url}>{r.name}</a>,
-            contentText: r.description,
+            text: r.description,
+            date: r.createdAt.split("T")[0],
+            category: {
+              tag: r.primaryLanguage ? r.primaryLanguage.name : null,
+              color: r.primaryLanguage ? r.primaryLanguage.color : null,
+            },
+            link: {
+              url: r.url,
+              text: r.name,
+            },
           };
         })
         .reverse()
@@ -78,15 +88,35 @@ const App = () => {
               {user.repositories.totalCount}
             </h1>
           </div>
-          <div style={{ width: "80vw", height: "65vh" }}>
-            <Chrono
-              items={repos}
-              mode="TREE"
-              cardHeight={300}
-              slideShow
-              slideItemDuration={2000}
-              theme={{ primary: "#c6ac8f", secondary: "#323031" }}
-            />
+          <div className="timeline-container">
+            {repos.map((repo) => {
+              return (
+                <div className="timeline-item" key={repo.link.url}>
+                  <div className="timeline-item-content">
+                    {repo.category.tag && (
+                      <span
+                        className="tag"
+                        style={{ background: repo.category.color }}
+                      >
+                        {repo.category.tag}
+                      </span>
+                    )}
+                    <time>{repo.date}</time>
+                    <p>{repo.text}</p>
+                    {repo.link && (
+                      <a
+                        href={repo.link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                      >
+                        {repo.link.text}
+                      </a>
+                    )}
+                    <span className="circle" />
+                  </div>
+                </div>
+              );
+            })}
           </div>
         </div>
       )}
