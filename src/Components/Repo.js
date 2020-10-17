@@ -45,7 +45,14 @@ const Repo = ({ repos }) => {
                 </span>
               )}
               <time>{formatted_date}</time>
-              <p>{repo.text}</p>
+              <p>
+                {repo.isFork && (
+                  <i>
+                    <b>(Forked) </b>
+                  </i>
+                )}
+                {repo.text}
+              </p>
               {repo.link && (
                 <a
                   href={repo.link.url}

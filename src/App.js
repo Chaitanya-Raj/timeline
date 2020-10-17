@@ -14,8 +14,9 @@ const App = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    const { repositoryOwner } = await graphql({
-      query: `
+    try {
+      const { repositoryOwner } = await graphql({
+        query: `
         query User($login: String!, $first: Int!) {
           repositoryOwner(login: $login) {
             login
@@ -30,6 +31,7 @@ const App = () => {
                   name
                   color
                 }
+                isFork
                 createdAt
                 url
               }
@@ -37,31 +39,36 @@ const App = () => {
           }
         }
       `,
-      login,
-      first,
-      headers: {
-        authorization: `token ${REACT_APP_TOKEN}`,
-      },
-    });
-    setUser(repositoryOwner);
-    setRepos(
-      repositoryOwner.repositories.nodes
-        .map((r) => {
-          return {
-            text: r.description,
-            date: r.createdAt.split("T")[0],
-            category: {
-              tag: r.primaryLanguage ? r.primaryLanguage.name : null,
-              color: r.primaryLanguage ? r.primaryLanguage.color : null,
-            },
-            link: {
-              url: r.url,
-              text: r.name,
-            },
-          };
-        })
-        .reverse()
-    );
+        login,
+        first,
+        headers: {
+          authorization: `token ${REACT_APP_TOKEN}`,
+        },
+      });
+      setUser(repositoryOwner);
+      console.log(repositoryOwner);
+      setRepos(
+        repositoryOwner.repositories.nodes
+          .map((r) => {
+            return {
+              text: r.description,
+              date: r.createdAt.split("T")[0],
+              category: {
+                tag: r.primaryLanguage ? r.primaryLanguage.name : null,
+                color: r.primaryLanguage ? r.primaryLanguage.color : null,
+              },
+              isFork: r.isFork,
+              link: {
+                url: r.url,
+                text: r.name,
+              },
+            };
+          })
+          .reverse()
+      );
+    } catch (error) {
+      console.error("User does not exist");
+    }
   };
 
   return (
@@ -75,6 +82,7 @@ const App = () => {
           value={login}
           onChange={(e) => setLogin(e.target.value)}
           placeholder="Type a github username..."
+          autoFocus
         />
       </form>
       {user && repos && (
