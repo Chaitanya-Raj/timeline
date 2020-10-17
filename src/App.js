@@ -1,11 +1,13 @@
 import React, { useState } from "react";
 import { graphql } from "@octokit/graphql";
+import { Chrono } from "react-chrono";
 import "./App.css";
 
 const App = () => {
   const [login, setLogin] = useState("");
   const [user, setUser] = useState(null);
-  const first = 50;
+  const [repos, setRepos] = useState(null);
+  const first = 100;
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -36,6 +38,20 @@ const App = () => {
     });
     console.log(repositoryOwner);
     setUser(repositoryOwner);
+    setRepos(
+      repositoryOwner.repositories.nodes
+        .map((r) => {
+          return {
+            title: r.createdAt,
+            contentTitle: <a href={r.url}>{r.name}</a>,
+            contentText: r.description,
+          };
+        })
+        .reverse()
+    );
+    setTimeout(() => {
+      document.querySelector(".result").scrollIntoView();
+    }, 1500);
   };
 
   return (
@@ -50,28 +66,28 @@ const App = () => {
           onChange={(e) => setLogin(e.target.value)}
         />
       </form>
-      {user && (
+      {user && repos && (
         <div className="result">
           <div className="user-info">
-            <img
-              src={user.avatarUrl}
-              alt="Avatar"
-              width="100px"
-              height="100px"
-            />
+            <img src={user.avatarUrl} alt="Avatar" />
             <h1>
               <a href={user.url}>{user.login}</a>
             </h1>
+            <h1>
+              Total Repositories <br />
+              {user.repositories.totalCount}
+            </h1>
           </div>
-          <ul>
-            {user.repositories.nodes.map((n) => (
-              <li className="repo" key={n.name}>
-                <p>{n.name}</p>
-                <p>{n.description}</p>
-                <p>{n.createdAt}</p>
-              </li>
-            ))}
-          </ul>
+          <div style={{ width: "80vw", height: "65vh" }}>
+            <Chrono
+              items={repos}
+              mode="TREE"
+              cardHeight={300}
+              slideShow
+              slideItemDuration={2000}
+              theme={{ primary: "#c6ac8f", secondary: "#323031" }}
+            />
+          </div>
         </div>
       )}
     </div>
