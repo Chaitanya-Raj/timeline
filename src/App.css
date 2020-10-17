@@ -1,7 +1,6 @@
 * {
   box-sizing: border-box;
   font-family: Verdana, Geneva, Tahoma, sans-serif;
-  /* font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif; */
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none; /* IE and Edge */
@@ -227,6 +226,12 @@ input {
 .timeline-item:nth-child(odd) .timeline-item-content .circle {
   right: auto;
   left: -40px;
+}
+
+input:hover,
+.user-info:hover,
+.timeline-item:hover {
+  transform: scale(1.05);
 }
 
 @media only screen and (max-width: 1023px) {
