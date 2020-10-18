@@ -229,8 +229,7 @@ input {
 }
 
 input:hover,
-.user-info:hover,
-.timeline-item:hover {
+.user-info:hover {
   transform: scale(1.05);
 }
 
