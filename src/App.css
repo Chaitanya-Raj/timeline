@@ -233,6 +233,14 @@ input:hover,
   transform: scale(1.05);
 }
 
+.Toastify__toast {
+  border: none;
+  text-align: center;
+  color: #323031;
+  background-color: #c6af8f;
+  box-shadow: 1px 1px 10px #222, -1px -1px 10px #222;
+}
+
 @media only screen and (max-width: 1023px) {
   .user-info {
     font-size: 0.7rem;

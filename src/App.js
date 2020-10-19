@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { graphql } from "@octokit/graphql";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./App.css";
 import User from "./Components/User";
 import Repo from "./Components/Repo";
@@ -11,6 +13,17 @@ const App = () => {
   const [user, setUser] = useState(null);
   const [repos, setRepos] = useState(null);
   const first = 100;
+
+  const notify = () =>
+    toast("User does not exist", {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+    });
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -46,7 +59,6 @@ const App = () => {
         },
       });
       setUser(repositoryOwner);
-      console.log(repositoryOwner);
       setRepos(
         repositoryOwner.repositories.nodes
           .map((r) => {
@@ -67,31 +79,35 @@ const App = () => {
           .reverse()
       );
     } catch (error) {
-      console.error("User does not exist");
+      notify();
     }
   };
 
   return (
-    <div className="container">
-      <form onSubmit={onSubmit}>
-        <input
-          onSubmit={onSubmit}
-          type="text"
-          name="user"
-          id="user"
-          value={login}
-          onChange={(e) => setLogin(e.target.value)}
-          placeholder="Type a github username..."
-          autoFocus
-        />
-      </form>
-      {user && repos && (
-        <div className="result">
-          <User user={user} />
-          <Repo repos={repos} />
-        </div>
-      )}
-    </div>
+    <>
+      <ToastContainer />
+
+      <div className="container">
+        <form onSubmit={onSubmit}>
+          <input
+            onSubmit={onSubmit}
+            type="text"
+            name="user"
+            id="user"
+            value={login}
+            onChange={(e) => setLogin(e.target.value)}
+            placeholder="Type a github username..."
+            autoFocus
+          />
+        </form>
+        {user && repos && (
+          <div className="result">
+            <User user={user} />
+            <Repo repos={repos} />
+          </div>
+        )}
+      </div>
+    </>
   );
 };
 
