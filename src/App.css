@@ -46,6 +46,10 @@ input {
   box-shadow: 1px 1px 10px #222, -1px -1px 10px #222;
 }
 
+input:focus {
+  outline: none;
+}
+
 @keyframes slide-down {
   from {
     transform: translateY(-550px);
