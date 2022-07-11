@@ -3,8 +3,13 @@
   font-family: Verdana, Geneva, Tahoma, sans-serif;
 
   /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none; /* IE and Edge */
-  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
+  --background: #1C1D21;
+  --primary: #BB9BB0;
+  --secondary: #e17b77;
 }
 
 /* Hide scrollbar for Chrome, Safari and Opera */
@@ -19,8 +24,8 @@ html {
 body {
   margin: 0;
   padding: 0;
-  background: #323031;
-  color: #c6ac8f;
+  background: var(--background);
+  color: var(--primary);
 }
 
 .container {
@@ -39,8 +44,8 @@ input {
   text-align: center;
   font-size: 1.5rem;
   border: none;
-  color: #323031;
-  background-color: #c6af8f;
+  color: var(--background);
+  background-color: var(--primary);
   animation: slide-down 2s;
   border-radius: 50px;
   box-shadow: 1px 1px 10px #222, -1px -1px 10px #222;
@@ -54,6 +59,7 @@ input:focus {
   from {
     transform: translateY(-550px);
   }
+
   to {
     transform: translateY(0px);
   }
@@ -73,6 +79,7 @@ input:focus {
   from {
     transform: translateY(550px);
   }
+
   to {
     transform: translateY(0px);
   }
@@ -80,8 +87,8 @@ input:focus {
 
 .user-info {
   padding-top: 10px;
-  background: #c6af8f;
-  color: #323031;
+  background: var(--primary);
+  color: var(--background);
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -92,7 +99,7 @@ input:focus {
 
 .user-info img {
   margin-top: 10px;
-  border: 1px solid #323031;
+  border: 1px solid var(--background);
   width: 150px;
 }
 
@@ -109,7 +116,7 @@ input:focus {
 }
 
 .timeline-container::after {
-  background-color: #e17b77;
+  background-color: var(--secondary);
   content: "";
   position: absolute;
   left: calc(50% - 2px);
@@ -136,7 +143,7 @@ input:focus {
 .timeline-item-content {
   box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
   border-radius: 5px;
-  background-color: #c6af8f;
+  background-color: var(--primary);
   display: flex;
   flex-direction: column;
   align-items: flex-end;
@@ -145,12 +152,12 @@ input:focus {
   width: 90vw;
   max-width: 70%;
   text-align: right;
-  color: #323031;
+  color: var(--background);
 }
 
 .timeline-item-content::after {
   content: " ";
-  background-color: #c6af8f;
+  background-color: var(--primary);
   box-shadow: 1px -1px 1px rgba(0, 0, 0, 0.2);
   position: absolute;
   right: -7.5px;
@@ -207,7 +214,7 @@ input:focus {
   word-wrap: break-word;
   text-decoration: none;
   font-weight: bold;
-  color: #323031;
+  color: var(--background);
 }
 
 .timeline-item-content a::after {
@@ -216,8 +223,8 @@ input:focus {
 }
 
 .timeline-item-content .circle {
-  background-color: #323031;
-  border: 3px solid #e17b77;
+  background-color: var(--background);
+  border: 3px solid var(--secondary);
   border-radius: 50%;
   position: absolute;
   top: calc(50% - 10px);
@@ -240,8 +247,8 @@ input:hover,
 .Toastify__toast {
   border: none;
   text-align: center;
-  color: #323031;
-  background-color: #c6af8f;
+  color: var(--background);
+  background-color: var(--primary);
   box-shadow: 1px 1px 10px #222, -1px -1px 10px #222;
 }
 
@@ -265,6 +272,7 @@ input:hover,
     flex-direction: column;
     font-size: 0.7rem;
   }
+
   .timeline-item-content,
   .timeline-item:nth-child(odd) .timeline-item-content {
     padding: 15px 10px;

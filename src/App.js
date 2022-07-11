@@ -6,7 +6,7 @@ import "./App.css";
 import User from "./Components/User";
 import Repo from "./Components/Repo";
 
-const { REACT_APP_TOKEN } = process.env;
+const REACT_APP_TOKEN = process.env.REACT_APP_TOKEN;
 
 const App = () => {
   const [login, setLogin] = useState("");
