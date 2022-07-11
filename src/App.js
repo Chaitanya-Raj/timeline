@@ -83,31 +83,38 @@ const App = () => {
     }
   };
 
-  return (
-    <>
-      <ToastContainer />
+  // return (
+  //   <>
+  //     <ToastContainer />
 
-      <div className="container">
-        <form onSubmit={onSubmit}>
-          <input
-            onSubmit={onSubmit}
-            type="text"
-            name="user"
-            id="user"
-            value={login}
-            onChange={(e) => setLogin(e.target.value)}
-            placeholder="Type a github username..."
-            autoFocus
-          />
-        </form>
-        {user && repos && (
-          <div className="result">
-            <User user={user} />
-            <Repo repos={repos} />
-          </div>
-        )}
-      </div>
-    </>
+  //     <div className="container">
+  //       <form onSubmit={onSubmit}>
+  //         <input
+  //           onSubmit={onSubmit}
+  //           type="text"
+  //           name="user"
+  //           id="user"
+  //           value={login}
+  //           onChange={(e) => setLogin(e.target.value)}
+  //           placeholder="Type a github username..."
+  //           autoFocus
+  //         />
+  //       </form>
+  //       {user && repos && (
+  //         <div className="result">
+  //           <User user={user} />
+  //           <Repo repos={repos} />
+  //         </div>
+  //       )}
+  //     </div>
+  //   </>
+  // );
+
+  return (
+    <div className="maintenance">
+      <h1>Down for Maintenance</h1>
+      <p>We'll be back soon.</p>
+    </div>
   );
 };
 
