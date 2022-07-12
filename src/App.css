@@ -70,6 +70,7 @@ input {
   color: var(--background);
   background-color: var(--primary);
   animation: slide-down 2s;
+  transition: all 1s ease;
   border-radius: 50px;
   box-shadow: 1px 1px 10px #222, -1px -1px 10px #222;
 }
