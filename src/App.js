@@ -21,12 +21,10 @@ const App = () => {
     const code =
       window.location.href.match(/\?code=(.*)/) &&
       window.location.href.match(/\?code=(.*)/)[1];
-    console.log(code);
     if (code) {
       fetch(`https://timeline-github.herokuapp.com/authenticate/${code}`)
         .then((response) => response.json())
         .then(({ token }) => {
-          console.log(token);
           setToken(token);
         });
     }
@@ -100,8 +98,6 @@ const App = () => {
       notify();
     }
   };
-
-  console.log("token : ", token);
 
   return (
     <>
