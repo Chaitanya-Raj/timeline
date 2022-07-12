@@ -2,7 +2,7 @@
 
 * {
   box-sizing: border-box;
-  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-family: 'Josefin Sans', sans-serif;
 
   /* Hide scrollbar for IE, Edge and Firefox */
   -ms-overflow-style: none;
@@ -28,6 +28,27 @@ body {
   padding: 0;
   background: var(--background);
   color: var(--primary);
+}
+
+.login {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.login>img {
+  width: 20vh;
+}
+
+.login>a>button {
+  background-color: var(--primary);
+  border: 0;
+  border-radius: 50px;
+  width: 200px;
+  height: 50px;
+  font-size: 1.5rem;
 }
 
 .container {
@@ -264,12 +285,10 @@ input:hover,
 
 .maintenance>h1 {
   font-size: 4rem;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 .maintenance>p {
   font-size: 1.5rem;
-  font-family: 'Josefin Sans', sans-serif;
 }
 
 @media only screen and (max-width: 1023px) {
