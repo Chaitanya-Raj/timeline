@@ -111,7 +111,7 @@ const App = () => {
         <div className="login">
           <img src={logo} alt="GitHub" />
           <a
-            href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&scope=user&redirect_uri=${REDIRECT_URI}`}
+            href={`https://github.com/login/oauth/authorize?client_id=${CLIENT_ID}&redirect_uri=${REDIRECT_URI}`}
           >
             <button>login</button>
           </a>

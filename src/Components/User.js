@@ -7,7 +7,7 @@ const User = ({ user }) => {
         <img src={user.avatarUrl} alt="Avatar" />
         <h1>{user.login}</h1>
       </a>
-      <a href={`${user.url}/repositories`}>
+      <a href={`${user.url}?tab=repositories`}>
         <h1>
           Total Repositories <br />
           {user.repositories.totalCount}
