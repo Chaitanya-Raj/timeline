@@ -1,6 +1,6 @@
 # Github Timeline
 
-![sample](/sample.png)
+![preview](/preview.png)
 
 Shows the repositories created by a user over time in a neat timeline format.
 
