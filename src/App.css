@@ -224,6 +224,10 @@ input:focus {
   padding: 5px;
   position: absolute;
   text-transform: uppercase;
+  border-radius: var(--border-radius);
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .timeline-item:nth-child(odd) .timeline-item-content .tag {
