@@ -50,14 +50,14 @@ body {
   }
 }
 
-.login>img {
+.login > img {
   width: 20vh;
 }
 
-.login>a>button {
+.login > a > button {
   background-color: var(--primary);
   border: 0;
-  border-radius: 50px;
+  padding: 4px;
   width: 200px;
   border-radius: var(--border-radius);
   font-size: 1.5rem;
@@ -137,6 +137,7 @@ input:focus {
   margin-top: 10px;
   border: 1px solid var(--background);
   width: 150px;
+  border-radius: var(--border-radius);
 }
 
 .user-info a {
@@ -301,11 +302,11 @@ input:hover,
   flex-direction: column;
 }
 
-.maintenance>h1 {
+.maintenance > h1 {
   font-size: 4rem;
 }
 
-.maintenance>p {
+.maintenance > p {
   font-size: 1.5rem;
 }
 
